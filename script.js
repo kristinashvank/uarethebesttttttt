@@ -47,3 +47,8 @@ musicBtn.addEventListener("click", () => {
   music.play();
   musicBtn.style.display = "none";
 });
+document.getElementById("loginForm").addEventListener("submit", function (e) {
+  e.preventDefault(); // ← ВОТ ЭТО КЛЮЧ
+  checkPassword();
+});
+
