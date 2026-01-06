@@ -1,15 +1,4 @@
-// 🔐 ПАРОЛЬ
-function checkPassword() {
-  const pass = document.getElementById("password").value;
-  const correct = "125512"; // 🔴 можешь поменять пароль
 
-  if (pass === correct) {
-    localStorage.setItem("access", "yes");
-    window.location.href = "home.html";
-  } else {
-    document.getElementById("error").innerText = "Думай роднусь";
-  }
-}
 
 // ⛔ защита страниц
 if (window.location.pathname.includes("home")) {
@@ -47,20 +36,26 @@ musicBtn.addEventListener("click", () => {
   music.play();
   musicBtn.style.display = "none";
 });
-// можно даже в самый верх
-document.getElementById("loginForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  checkPassword();
+document.addEventListener("DOMContentLoaded", function () {
+
+  const correctPassword = "125512";
+
+  const form = document.getElementById("loginForm");
+  const passwordInput = document.getElementById("password");
+  const errorText = document.getElementById("error");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    if (passwordInput.value === correctPassword) {
+      localStorage.setItem("access", "yes");
+      window.location.href = "home.html";
+    } else {
+      errorText.innerText = "Думай, роднусь";
+    }
+  });
+
 });
 
-function checkPassword() {
-  const password = document.getElementById("password").value;
-
-  if (password === "125512") {
-    alert("Доступ разрешён");
-  } else {
-    alert("Неверный пароль");
-  }
-}
 
 
