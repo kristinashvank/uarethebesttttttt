@@ -47,8 +47,20 @@ musicBtn.addEventListener("click", () => {
   music.play();
   musicBtn.style.display = "none";
 });
+// можно даже в самый верх
 document.getElementById("loginForm").addEventListener("submit", function (e) {
-  e.preventDefault(); // ← ВОТ ЭТО КЛЮЧ
+  e.preventDefault();
   checkPassword();
 });
+
+function checkPassword() {
+  const password = document.getElementById("password").value;
+
+  if (password === "125512") {
+    alert("Доступ разрешён");
+  } else {
+    alert("Неверный пароль");
+  }
+}
+
 
