@@ -1,0 +1,192 @@
+/* ===== ОСНОВА ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+}
+
+/* ===== ЗВЁЗДЫ ===== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(1px 1px at 80% 40%, white, transparent),
+    radial-gradient(2px 2px at 60% 70%, white, transparent),
+    radial-gradient(1px 1px at 30% 80%, white, transparent),
+    radial-gradient(2px 2px at 90% 20%, white, transparent);
+  background-size: 200px 200px;
+  animation: starsMove 60s linear infinite;
+  opacity: 0.6;
+  z-index: -2;
+}
+
+@keyframes starsMove {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 1000px; }
+}
+
+
+
+/* ===== ЦЕНТРИРОВКА ===== */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ===== КАРТОЧКИ ===== */
+.card {
+  position: relative;
+  z-index: 10;
+
+  max-width: 480px;
+  width: 90%;
+
+  margin: 60px auto;
+  padding: 32px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== ТЕКСТ ===== */
+h1 {
+  margin-top: 0;
+}
+
+p {
+  line-height: 1.5;
+}
+
+/* ===== INPUT / BUTTON ===== */
+input {
+  padding: 10px;
+  width: 80%;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #ff5c8d;
+  color: white;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #ff2e6e;
+}
+
+/* ===== ПИСЬМА ===== */
+.letter {
+  margin: 15px 0;
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.08);
+}
+
+.letter span {
+  font-weight: bold;
+}
+
+.letter .content {
+  display: none;
+  margin-top: 10px;
+}
+
+/* ===== КНОПКА МУЗЫКИ ===== */
+#play-music {
+  background: #4a90e2;
+}
+
+#play-music:hover {
+  background: #357ABD;
+}
+
+/* ===== КНОПКИ СОБЫТИЙ ===== */
+button.event-btn {
+  margin-top: 10px;
+  background: #4a90e2;
+}
+
+button.event-btn:hover {
+  background: #357ABD;
+}
+/* ===== ПЛАВАЮЩИЕ ФОТО ПО ВСЕМУ ФОНУ ===== */
+
+.floating-photos {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* общее для всех фото */
+.fp {
+  position: absolute;
+  width: 140px;
+  border-radius: 14px;
+  opacity: 0.75;
+  animation: floatUp 60s linear infinite;
+}
+
+/* разные позиции (ИЗБЕГАЕМ ЦЕНТР) */
+.fp1 { left: 5%;  animation-duration: 55s; }
+.fp2 { left: 15%; animation-duration: 65s; }
+.fp3 { left: 70%; animation-duration: 60s; }
+.fp4 { left: 80%; animation-duration: 70s; }
+.fp5 { left: 90%; animation-duration: 58s; }
+.fp6 { left: 25%; animation-duration: 75s; }
+
+/* старт с низа */
+.fp1, .fp2, .fp3, .fp4, .fp5, .fp6 {
+  top: 110vh;
+}
+
+/* анимация */
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-200vh);
+  }
+}
+
+/* ===== ЗАЩИТА ЦЕНТРА (письма всегда сверху) ===== */
+.card {
+  position: relative;
+  z-index: 5;
+}
+
